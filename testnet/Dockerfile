@@ -23,8 +23,11 @@ ADD --chown=fxcore:root [\
   "https://raw.githubusercontent.com/functionx/fx-core/testnet/public/genesis.json",\
   "$HOME/.fxcore/config/"]
 
-# Update configuration.
+# Update app configuration.
 RUN fxcored config config.toml log_level warn
 
+# Update Docker configuration.
 ENTRYPOINT ["/usr/bin/fxcored"]
+EXPOSE 1317/TCP 9090/TCP 26656/TCP 26656/UDP 26657/TCP 26660/TCP
+HEALTHCHECK CMD ["/usr/bin/bash", "-c", "</dev/tcp/127.0.0.1/26657"]
 VOLUME "$HOME"
