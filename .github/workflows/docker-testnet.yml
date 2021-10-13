@@ -1,0 +1,45 @@
+---
+name: Docker Testnet
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    paths:
+      - '**/Dockerfile'
+      - '.github/workflows/docker-testnet.yml'
+  push:
+    branches:
+      - "master"
+      - "dev*"
+    paths:
+      - '**/Dockerfile'
+      - '.github/workflows/docker-testnet.yml'
+
+jobs:
+  Hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: testnet/Dockerfile
+  Docker-FX:
+    runs-on: ubuntu-latest
+    needs: Hadolint
+    container:
+      image: functionx/fx-core:testnet
+    steps:
+      - run: fxcored init fx-zakir
+  Docker-Testnet:
+    defaults:
+      run:
+        shell: bash
+        working-directory: testnet
+    runs-on: ubuntu-latest
+    needs: Hadolint
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: docker build --tag fxcore .
+      - name: Run
+        run: docker run fxcore init fx-zakir -o
