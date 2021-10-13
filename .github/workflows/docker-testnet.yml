@@ -27,19 +27,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: Hadolint
     container:
-      image: functionx/fx-core:testnet
+      image: functionx/fx-core:2.1-testnet
     steps:
       - run: fxcored init fx-zakir
   Docker-Testnet:
-    defaults:
-      run:
-        shell: bash
-        working-directory: testnet
     runs-on: ubuntu-latest
     needs: Hadolint
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: docker build --tag fxcore .
+        run: docker build --tag fxcore testnet
       - name: Run
         run: docker run fxcore init fx-zakir -o
