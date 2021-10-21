@@ -1,0 +1,35 @@
+---
+version: "3"
+services:
+  fxcore-testnet:
+    build: .
+    container_name: fxcore-testnet
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+        window: 120s
+    environment:
+      - HOME=/home/fxcore
+    image: fx-core:testnet
+    logging:
+      driver: syslog
+    ports:
+      - 1317:1317
+      - 26656:26656
+      - 26657:26657
+      - 26660:26660
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 40000
+        hard: 65535
+    volumes:
+      - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
+      - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
+volumes:
+  fxcore-testnet-config:
+    external: true
+  fxcore-testnet-data:
+    external: true
