@@ -2,11 +2,11 @@ FROM functionx/fx-core:testnet-1.0 AS fxcore
 FROM ubuntu:20.04
 
 # Build arguments.
-ARG TMHOME
+ARG FXHOME
 
 # Environmental variables.
 ENV HOME /home/fxcore
-ENV TMHOME /fxcore
+ENV FXHOME /fxcore
 
 # Copy fxcored binary.
 COPY --from=fxcore /usr/bin/fxcored /usr/bin/fxcored
