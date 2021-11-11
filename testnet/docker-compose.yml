@@ -3,6 +3,7 @@ version: "3"
 services:
   fxcore-testnet:
     build: .
+    command: ["start"]
     container_name: fxcore-testnet
     deploy:
       restart_policy:
