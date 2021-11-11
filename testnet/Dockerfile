@@ -6,7 +6,7 @@ ARG FXHOME
 
 # Environmental variables.
 ENV HOME /home/fxcore
-ENV FXHOME /fxcore
+ENV FXHOME $HOME/.fxcore
 
 # Copy fxcored binary.
 COPY --from=fxcore /usr/bin/fxcored /usr/bin/fxcored
