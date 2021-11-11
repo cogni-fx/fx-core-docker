@@ -1,4 +1,4 @@
-FROM functionx/fx-core:2.1-testnet AS fxcore
+FROM functionx/fx-core:testnet-1.0 AS fxcore
 FROM ubuntu:20.04
 
 # Build arguments.

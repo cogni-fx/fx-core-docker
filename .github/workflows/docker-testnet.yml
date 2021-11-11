@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: Hadolint
     container:
-      image: functionx/fx-core:2.1-testnet
+      image: functionx/fx-core:testnet-1.0
     steps:
       - run: fxcored init fx-zakir
   Docker-Testnet:
