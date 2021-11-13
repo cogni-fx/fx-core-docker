@@ -3,10 +3,11 @@ FROM ubuntu:20.04
 
 # Build arguments.
 ARG FXHOME
+ARG NETNAME=testnet
 
 # Environmental variables.
-ENV HOME /home/fxcore
 ENV FXHOME $HOME/.fxcore
+ENV HOME /home/fxcore
 
 # Copy fxcored binary.
 COPY --from=fxcore /usr/bin/fxcored /usr/bin/fxcored
@@ -18,10 +19,10 @@ WORKDIR "$HOME"
 
 # Add configuration files.
 ADD --chown=fxcore:root [\
-  "https://raw.githubusercontent.com/functionx/fx-core/testnet/public/app.toml",\
-  "https://raw.githubusercontent.com/functionx/fx-core/testnet/public/config.toml",\
-  "https://raw.githubusercontent.com/functionx/fx-core/testnet/public/genesis.json",\
-  "$HOME/.fxcore/config/"]
+  "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/app.toml",\
+  "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/config.toml",\
+  "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/genesis.json",\
+  "$FXHOME/config/"]
 
 # Update app configuration.
 RUN fxcored config config.toml log_level warn
