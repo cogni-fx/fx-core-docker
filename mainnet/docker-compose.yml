@@ -1,10 +1,10 @@
 ---
 version: "3"
 services:
-  fxcore-testnet:
+  fxcore-mainnet:
     build: ..
     command: ["start"]
-    container_name: fxcore-testnet
+    container_name: fxcore-mainnet
     deploy:
       restart_policy:
         condition: on-failure
@@ -13,7 +13,7 @@ services:
         window: 120s
     environment:
       - HOME=/home/fxcore
-    image: fx-core:testnet
+    image: fx-core:mainnet
     logging:
       driver: syslog
     ports:
@@ -27,10 +27,10 @@ services:
         soft: 40000
         hard: 65535
     volumes:
-      - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
-      - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
+      - fxcore-mainnet-config:/home/fxcore/.fxcore/config:rw
+      - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
 volumes:
-  fxcore-testnet-config:
+  fxcore-mainnet-config:
     external: true
-  fxcore-testnet-data:
+  fxcore-mainnet-data:
     external: true

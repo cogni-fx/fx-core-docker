@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 
 # Build arguments.
 ARG FXHOME
-ARG NETNAME=testnet
+ARG FXNET=testnet
 
 # Environmental variables.
 ENV HOME /home/fxcore
@@ -19,10 +19,10 @@ WORKDIR "$HOME"
 
 # Add configuration files.
 ADD --chown=fxcore:root [\
-  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$NETNAME/app.toml",\
-  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$NETNAME/config.toml",\
-  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$NETNAME/genesis.json",\
-  "$FXHOME/config-$NETNAME/"]
+  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$FXNET/app.toml",\
+  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$FXNET/config.toml",\
+  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$FXNET/genesis.json",\
+  "$FXHOME/config-$FXNET/"]
 
 # Update app configuration.
 #RUN fxcored config config.toml log_level warn
