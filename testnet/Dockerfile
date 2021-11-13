@@ -6,8 +6,8 @@ ARG FXHOME
 ARG NETNAME=testnet
 
 # Environmental variables.
-ENV FXHOME $HOME/.fxcore
 ENV HOME /home/fxcore
+ENV FXHOME $HOME/.fxcore
 
 # Copy fxcored binary.
 COPY --from=fxcore /usr/bin/fxcored /usr/bin/fxcored
@@ -22,13 +22,13 @@ ADD --chown=fxcore:root [\
   "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/app.toml",\
   "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/config.toml",\
   "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/genesis.json",\
-  "$FXHOME/config/"]
+  "$FXHOME/config-$NETNAME/"]
 
 # Update app configuration.
-RUN fxcored config config.toml log_level warn
+#RUN fxcored config config.toml log_level warn
 
 # Update Docker configuration.
 ENTRYPOINT ["/usr/bin/fxcored"]
 EXPOSE 1317/TCP 9090/TCP 26656/TCP 26656/UDP 26657/TCP 26660/TCP
 HEALTHCHECK CMD ["/usr/bin/bash", "-c", "</dev/tcp/127.0.0.1/26657"]
-VOLUME "$HOME"
+VOLUME "$FXHOME/config" "$FXHOME/data"
