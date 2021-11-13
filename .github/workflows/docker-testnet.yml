@@ -37,3 +37,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build
         run: docker build --tag fxcore testnet
+      - name: Create config and data dirs
+        run: mkdir -m=777 -v config data
+      - name: Run
+        run: >-
+          docker run
+          -v "$PWD"/config:/home/fxcore/.fxcore/config:rw
+          -v "$PWD"/data:/home/fxcore/.fxcore/data:rw
+          fxcore init fx-zakir -o
