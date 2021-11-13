@@ -19,9 +19,9 @@ WORKDIR "$HOME"
 
 # Add configuration files.
 ADD --chown=fxcore:root [\
-  "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/app.toml",\
-  "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/config.toml",\
-  "https://raw.githubusercontent.com/functionx/fx-core/$NETNAME/public/genesis.json",\
+  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$NETNAME/app.toml",\
+  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$NETNAME/config.toml",\
+  "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$NETNAME/genesis.json",\
   "$FXHOME/config-$NETNAME/"]
 
 # Update app configuration.
