@@ -26,9 +26,10 @@ jobs:
   Docker-FX:
     needs: Hadolint
     container:
-      image: functionx/fx-core:testnet-1.0
+      image: functionx/fx-core:${{ matrix.tag }}
     runs-on: ubuntu-latest
     steps:
+      - run: fxcored network
       - run: fxcored init fx-zakir
     strategy:
       matrix:
@@ -44,7 +45,7 @@ jobs:
         run: docker build --tag fxcore --build-arg FXNET=${{ matrix.net }} .
       - name: Create config and data dirs
         run: mkdir -m=777 -v config data
-      - name: Run
+      - name: Run init
         run: >-
           docker run
           -v "$PWD"/config:/home/fxcore/.fxcore/config:rw
