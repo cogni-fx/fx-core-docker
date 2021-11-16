@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
 # Init global variables.
 FXHOME=${FXHOME:-$HOME/.fxcore}
@@ -18,7 +18,6 @@ function __curl() {
   HOST=${server//:*/}
   PORT=${server//*:/}
   [[ "${HOST}" == "${PORT}" ]] && PORT=80
-
   exec 3<>/dev/tcp/"${HOST}/$PORT"
   echo -en "GET ${DOC} HTTP/1.0\r\nHost: ${HOST}\r\n\r\n" >&3
   (while read -r line; do
@@ -31,4 +30,12 @@ function __curl() {
 cp -v "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
 
 # Extract data files from the snapshot.
-__curl "$FXSNAPURL" | tar vxzf - -C "${fxcore_path_data}"/..
+if [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
+  __curl "$FXSNAPURL" | tar -f- --skip-old-files -vxz -C "${fxcore_path_data}"/..
+fi
+
+# Check status.
+/usr/bin/fxcored status
+
+# Start.
+/usr/bin/fxcored start

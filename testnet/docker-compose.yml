@@ -1,35 +1,13 @@
 ---
 version: "3.4"
 services:
-  init:
-    build:
-      context: ..
-      network: host
-    container_name: fxcore-testnet-init
-    command: /opt/scripts-init/init.sh
-    entrypoint: bash
-    environment:
-      - FXHOME=/home/fxcore/.fxcore
-      - HOME=/home/fxcore
-    image: fxcore:testnet
-    volumes:
-      - ./scripts-init:/opt/scripts-init
-      - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
-      - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
   node:
     build:
       context: ..
       network: host
-    command: ["start"]
+    command: /opt/scripts/entrypoint.sh
     container_name: fxcore-testnet
-    depends_on:
-      - init
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 5
-        window: 120s
+    entrypoint: bash
     environment:
       - FXHOME=/home/fxcore/.fxcore
       - HOME=/home/fxcore
@@ -50,6 +28,7 @@ services:
     volumes:
       - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
       - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
+      - ./scripts:/opt/scripts:ro
 volumes:
   fxcore-testnet-config:
     external: true
