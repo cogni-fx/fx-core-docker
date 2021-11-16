@@ -12,15 +12,14 @@ fxcore_path_data=$FXHOME/data
 
 # Define local functions.
 # @see: https://unix.stackexchange.com/a/421318/21471
-function __curl()
-{
+function __curl() {
   read -r _ server path < <(echo "${1//// }")
   DOC=/${path// //}
   HOST=${server//:*/}
   PORT=${server//*:/}
   [[ "${HOST}" == "${PORT}" ]] && PORT=80
 
-  exec 3<> /dev/tcp/"${HOST}/$PORT"
+  exec 3<>/dev/tcp/"${HOST}/$PORT"
   echo -en "GET ${DOC} HTTP/1.0\r\nHost: ${HOST}\r\n\r\n" >&3
   (while read -r line; do
     [[ "$line" == $'\r' ]] && break
