@@ -13,7 +13,7 @@ services:
         window: 120s
     environment:
       - HOME=/home/fxcore
-    image: fx-core:testnet
+    image: fxcore:testnet
     logging:
       driver: syslog
     ports:
@@ -21,6 +21,7 @@ services:
       - 26656:26656
       - 26657:26657
       - 26660:26660
+    restart: unless-stopped
     ulimits:
       nproc: 65535
       nofile:
