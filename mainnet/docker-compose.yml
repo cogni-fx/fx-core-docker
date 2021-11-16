@@ -17,10 +17,10 @@ services:
     logging:
       driver: syslog
     ports:
-      - 1317:1317
-      - 26656:26656
-      - 26657:26657
-      - 26660:26660
+      - 1317:1317  # REST API
+      - 26656:26656  # P2P
+      - 26657:26657  # RPC
+      - 26660:26660  # ABCI
     restart: unless-stopped
     ulimits:
       nproc: 65535
