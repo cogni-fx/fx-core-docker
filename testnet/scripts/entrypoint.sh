@@ -34,8 +34,5 @@ if [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
   __curl "$FXSNAPURL" | tar -f- --skip-old-files -vxz -C "${fxcore_path_data}"/..
 fi
 
-# Check status.
-/usr/bin/fxcored status
-
 # Start.
 /usr/bin/fxcored start
