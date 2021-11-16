@@ -5,8 +5,10 @@
 Example how to create Docker volumes:
 
 ```shell
-docker volume create --name=fxcore-mainnet-config --opt type=none --opt o=bind --opt device=/var/opt/fxcore-mainnet-config
-docker volume create --name=fxcore-mainnet-data  --opt type=none --opt o=bind --opt device=/var/opt/fxcore-mainnet-data
+docker volume create --name=fxcore-mainnet-config \
+  --opt type=none --opt o=bind --opt device=/var/opt/fxcore-mainnet-config
+docker volume create --name=fxcore-mainnet-data \
+  --opt type=none --opt o=bind --opt device=/var/opt/fxcore-mainnet-data
 docker volume ls
 ```
 
