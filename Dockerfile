@@ -1,5 +1,9 @@
 FROM functionx/fx-core:testnet-1.0 AS fxcore
-FROM ubuntu:20.04
+FROM ubuntu:20.04 AS ubuntu-with-wget
+RUN  apt-get update \
+  && apt-get install -qqq wget \
+  && rm -rf /var/lib/apt/lists/*
+FROM ubuntu:20.04 AS fxcore-ubuntu
 
 # Build arguments.
 ARG FXHOME

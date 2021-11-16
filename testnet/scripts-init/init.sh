@@ -31,4 +31,4 @@ function __curl() {
 cp -v "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
 
 # Extract data files from the snapshot.
-__curl "$FXSNAPURL" | tar uvxzf - -C "${fxcore_path_data}"/..
+__curl "$FXSNAPURL" | tar vxzf - -C "${fxcore_path_data}"/..

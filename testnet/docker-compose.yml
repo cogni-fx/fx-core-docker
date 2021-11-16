@@ -1,8 +1,10 @@
 ---
-version: "3"
+version: "3.4"
 services:
   init:
-    build: ..
+    build:
+      context: ..
+      network: host
     container_name: fxcore-testnet-init
     command: /opt/scripts-init/init.sh
     entrypoint: bash
@@ -15,7 +17,9 @@ services:
       - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
       - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
   node:
-    build: ..
+    build:
+      context: ..
+      network: host
     command: ["start"]
     container_name: fxcore-testnet
     depends_on:

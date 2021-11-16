@@ -1,10 +1,29 @@
 ---
-version: "3"
+version: "3.4"
 services:
-  fxcore-mainnet:
-    build: ..
+  init:
+    build:
+      context: ..
+      network: host
+    container_name: fxcore-mainnet-init
+    command: /opt/scripts-init/init.sh
+    entrypoint: bash
+    environment:
+      - FXHOME=/home/fxcore/.fxcore
+      - HOME=/home/fxcore
+    image: fxcore:mainnet
+    volumes:
+      - ./scripts-init:/opt/scripts-init
+      - fxcore-mainnet-config:/home/fxcore/.fxcore/config:rw
+      - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
+  node:
+    build:
+      context: ..
+      network: host
     command: ["start"]
     container_name: fxcore-mainnet
+    depends_on:
+      - init
     deploy:
       restart_policy:
         condition: on-failure
@@ -12,6 +31,7 @@ services:
         max_attempts: 5
         window: 120s
     environment:
+      - FXHOME=/home/fxcore/.fxcore
       - HOME=/home/fxcore
     image: fxcore:mainnet
     logging:
