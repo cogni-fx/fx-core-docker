@@ -34,6 +34,7 @@ jobs:
     strategy:
       matrix:
         tag:
+          - dhobyghaut-1.0
           - mainnet-1.0
           - testnet-1.0
   Docker:

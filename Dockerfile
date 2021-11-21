@@ -1,4 +1,4 @@
-FROM functionx/fx-core:testnet-1.0 AS fxcore
+FROM functionx/fx-core:dhobyghaut-1.0 AS fxcore
 FROM ubuntu:20.04 AS ubuntu-with-wget
 RUN  apt-get update \
   && apt-get install -qqq wget \
