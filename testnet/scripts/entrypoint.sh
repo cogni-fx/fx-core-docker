@@ -3,7 +3,6 @@ set -ex
 
 # Init global variables.
 FXHOME=${FXHOME:-$HOME/.fxcore}
-FXSNAPURL=${FXSNAPURL:-https://fx-testnet.s3.amazonaws.com/fxcore-snapshot-2021-11-15.tar.gz}
 
 # Init local variables.
 fxcore_path_config=$FXHOME/config
@@ -30,7 +29,7 @@ function __curl() {
 cp -v "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
 
 # Extract data files from the snapshot.
-if [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
+if [ -n "$FXSNAPURL" ] && [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
   __curl "$FXSNAPURL" | tar -f- --skip-old-files -vxz -C "${fxcore_path_data}"/..
 fi
 
