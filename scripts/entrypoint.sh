@@ -3,10 +3,11 @@ set -ex
 
 # Init global variables.
 FXHOME=${FXHOME:-$HOME/.fxcore}
+FXNET=${FXNET:-testnet}
 
 # Init local variables.
 fxcore_path_config=$FXHOME/config
-fxcore_path_config_examples=$FXHOME/config-testnet
+fxcore_path_config_examples=$FXHOME/config-$FXNET
 fxcore_path_data=$FXHOME/data
 
 # Define local functions.

@@ -12,6 +12,7 @@ services:
     entrypoint: bash
     environment:
       - FXHOME=/home/fxcore/.fxcore
+      - FXNET=mainnet
       - HOME=/home/fxcore
     image: fxcore:mainnet
     logging:
@@ -30,7 +31,7 @@ services:
     volumes:
       - fxcore-mainnet-config:/home/fxcore/.fxcore/config:rw
       - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
-      - ./scripts:/opt/scripts:ro
+      - ../scripts:/opt/scripts:ro
 volumes:
   fxcore-mainnet-config:
     external: true
