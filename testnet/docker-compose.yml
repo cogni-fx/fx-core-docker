@@ -4,7 +4,7 @@ services:
   node:
     build:
       args:
-        IMAGETAG: testnet-1.0
+        FXNET: testnet
       context: ..
       network: host
     command: /opt/scripts/entrypoint.sh

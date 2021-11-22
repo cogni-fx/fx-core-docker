@@ -4,7 +4,7 @@ services:
   node:
     build:
       args:
-        IMAGETAG: mainnet-1.0
+        FXNET: mainnet
       context: ..
       network: host
     command: /opt/scripts/entrypoint.sh
