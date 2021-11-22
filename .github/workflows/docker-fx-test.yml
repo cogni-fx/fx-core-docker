@@ -43,7 +43,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: docker build --tag fxcore --build-arg FXNET=${{ matrix.net }} .
+        run: >-
+          docker build
+          --build-arg FXNET=${{ matrix.net }}
+          --build-arg IMAGETAG=${{ matrix.net }}-1.0
+          --tag fxcore
+          .
       - name: Create config and data dirs
         run: mkdir -m=777 -v config data
       - name: Run init
