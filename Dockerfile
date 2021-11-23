@@ -26,7 +26,7 @@ USER fxcore
 WORKDIR "$HOME"
 
 # Add configuration files.
-ONBUILD ADD --chown=fxcore:root [\
+ADD --chown=fxcore:root [\
   "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$FXNET/app.toml",\
   "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$FXNET/config.toml",\
   "https://raw.githubusercontent.com/FunctionX/fx-core/master/public/$FXNET/genesis.json",\
