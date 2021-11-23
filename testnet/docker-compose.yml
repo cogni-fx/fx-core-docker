@@ -1,6 +1,22 @@
 ---
 version: "3.5"
 services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    user: "472"
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ../monitoring/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - grafana/config.monitoring
+    restart: always
+    networks:
+      - fx-net
   node:
     build:
       args:
