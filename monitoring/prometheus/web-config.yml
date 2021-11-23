@@ -1,0 +1,10 @@
+# yamllint disable rule:line-length
+---
+http_server_config:
+  http2: false
+basic_auth_users:
+  # Usernames and passwords required to connect to Prometheus.
+  # Passwords are hashed with bcrypt.
+  # See: https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md#about-bcrypt
+  # fx: fxcore
+  fx: $2y$10$pxrTMPnBJj.OzWTaT7lDOOCd9PNPKls0mTtKLAAKETnmEpQcWdWoG

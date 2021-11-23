@@ -15,8 +15,9 @@ services:
       - FXNET=testnet
       - HOME=/home/fxcore
     image: fxcore:testnet
-    logging:
-      driver: syslog
+    networks:
+      fx-net:
+        ipv4_address: 10.10.10.2
     ports:
       - 1317:1317  # REST API
       - 26656:26656  # P2P
@@ -32,8 +33,34 @@ services:
       - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
       - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
       - ../scripts:/opt/scripts:ro
+  prometheus:
+    command:
+      - '--storage.tsdb.path=/prometheus'
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.config.file=/etc/prometheus/web-config.yml'
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - 9095:9090
+    restart: always
+    networks:
+      - fx-net
+    volumes:
+      - ../monitoring/prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+networks:
+  fx-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+          gateway: 10.10.10.1
 volumes:
+  alertmanager_data:
+  alertmanagerbot_data:
   fxcore-testnet-config:
     external: true
   fxcore-testnet-data:
     external: true
+  grafana_data:
+  prometheus_data:
