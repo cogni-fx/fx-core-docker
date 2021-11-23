@@ -13,7 +13,7 @@ services:
       - grafana_data:/var/lib/grafana
       - ../monitoring/grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
-      - grafana/config.monitoring
+      - ../monitoring/grafana/config.env
     restart: always
     networks:
       - fx-net
