@@ -26,6 +26,11 @@ function __curl() {
   exec 3>&-
 }
 
+# Initialize node if required.
+if [ ! -f "${fxcore_path_config}"/node_key.json ]; then
+  /usr/bin/fxcored init fx-zakir
+fi
+
 # Copy config files.
 cp -v "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
 
