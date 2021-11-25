@@ -13,11 +13,11 @@ services:
     environment:
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=mainnet
-      - FXSNAPURL=https://fx-testnet.s3.amazonaws.com/fxcore-snapshot-testnet-2021-11-22.tar.gz
+      - FXSNAPURL=https://fx-mainnet.s3.amazonaws.com/fxcore-snapshot-mainnet-2021-11-22.tar.gz
       - HOME=/home/fxcore
     image: fxcore:mainnet
     networks:
-      fx-net:
+      fxnet-mainnet:
         ipv4_address: 10.10.0.2
     logging:
       driver: syslog
@@ -37,7 +37,7 @@ services:
       - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
       - ../scripts:/opt/scripts:ro
 networks:
-  fx-net:
+  fxnet-mainnet:
     driver: bridge
     ipam:
       config:
