@@ -30,6 +30,7 @@ services:
     environment:
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=testnet
+      - FXSNAPURL=https://fx-mainnet.s3.amazonaws.com/fxcore-snapshot-mainnet-2021-11-22.tar.gz
       - HOME=/home/fxcore
     image: fxcore:testnet
     networks:
