@@ -15,6 +15,9 @@ services:
       - FXNET=mainnet
       - HOME=/home/fxcore
     image: fxcore:mainnet
+    networks:
+      fx-net:
+        ipv4_address: 10.10.0.2
     logging:
       driver: syslog
     ports:
@@ -32,6 +35,13 @@ services:
       - fxcore-mainnet-config:/home/fxcore/.fxcore/config:rw
       - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
       - ../scripts:/opt/scripts:ro
+networks:
+  fx-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+          gateway: 10.10.0.1
 volumes:
   fxcore-mainnet-config:
     external: true
