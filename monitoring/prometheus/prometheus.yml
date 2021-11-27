@@ -42,11 +42,7 @@ scrape_configs:
     metrics_path: /metrics
     scheme: http
     static_configs:
-      # - targets: [ "192.168.98.100:26660"]
-      #   labels:
-      #     name: val-02
-      #     chain_id: fxcore
-      - targets: ["10.10.10.2:26660"]
+      - targets: ["node:26660"]
         labels:
-          name: val-01
+          name: node
           chain_id: fxcore
