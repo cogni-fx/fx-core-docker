@@ -1,6 +1,23 @@
 ---
 version: "3.5"
 services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    user: "472"
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ../monitoring/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ../monitoring/grafana/config.env
+    restart: always
+    networks:
+      fxnet-mainnet:
+        ipv4_address: 10.10.0.4
   node:
     build:
       args:
@@ -36,6 +53,22 @@ services:
       - fxcore-mainnet-config:/home/fxcore/.fxcore/config:rw
       - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
       - ../scripts:/opt/scripts:ro
+  prometheus:
+    command:
+      - '--storage.tsdb.path=/prometheus'
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.config.file=/etc/prometheus/web-config.yml'
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - 9095:9090
+    restart: always
+    networks:
+      fxnet-mainnet:
+        ipv4_address: 10.10.0.3
+    volumes:
+      - ../monitoring/prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
 networks:
   fxnet-mainnet:
     driver: bridge
@@ -43,7 +76,11 @@ networks:
       config:
         - subnet: 10.10.0.0/24
 volumes:
+  alertmanager_data:
+  alertmanagerbot_data:
   fxcore-mainnet-config:
     external: true
   fxcore-mainnet-data:
     external: true
+  grafana_data:
+  prometheus_data:
