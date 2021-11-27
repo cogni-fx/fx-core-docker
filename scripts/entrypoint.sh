@@ -32,7 +32,7 @@ if [ ! -f "${fxcore_path_config}"/node_key.json ]; then
 fi
 
 # Copy config files.
-cp -v "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
+cp -uv "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
 
 # Extract data files from the snapshot.
 if [ -n "$FXSNAPURL" ] && [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
