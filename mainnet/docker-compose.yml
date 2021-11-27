@@ -60,8 +60,6 @@ services:
       - '--web.config.file=/etc/prometheus/web-config.yml'
     container_name: prometheus
     image: prom/prometheus:latest
-    ports:
-      - 9095:9090
     restart: always
     networks:
       fxnet-mainnet:
