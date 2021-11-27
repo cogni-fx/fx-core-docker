@@ -7,4 +7,5 @@ basic_auth_users:
   # Passwords are hashed with bcrypt.
   # See: https://github.com/prometheus/exporter-toolkit/blob/master/docs/web-configuration.md#about-bcrypt
   # fx: fxcore
-  fx: $2y$10$pxrTMPnBJj.OzWTaT7lDOOCd9PNPKls0mTtKLAAKETnmEpQcWdWoG
+  # fx: $2y$10$pxrTMPnBJj.OzWTaT7lDOOCd9PNPKls0mTtKLAAKETnmEpQcWdWoG
+  cogni: $2y$10$nlyFBVgk1X4KrZhuiw.kzOq9wh/zTchTWYs9C7dCfSv8hLiiip8jC
