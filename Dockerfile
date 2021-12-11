@@ -1,9 +1,5 @@
 FROM functionx/fx-core:dhobyghaut-1.1 AS fxcore-testnet
 FROM functionx/fx-core:mainnet-1.0 AS fxcore-mainnet
-FROM ubuntu:20.04 AS ubuntu-with-wget
-RUN  apt-get update \
-  && apt-get install --no-install-recommends -qqq wget=1.20.3-1ubuntu1 \
-  && rm -rf /var/lib/apt/lists/*
 FROM ubuntu:20.04 AS fxcore-ubuntu
 
 # Build arguments.
