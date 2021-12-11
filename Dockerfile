@@ -1,4 +1,4 @@
-FROM functionx/fx-core:dhobyghaut-1.0 AS fxcore-testnet
+FROM functionx/fx-core:dhobyghaut-1.1 AS fxcore-testnet
 FROM functionx/fx-core:mainnet-1.0 AS fxcore-mainnet
 FROM ubuntu:20.04 AS ubuntu-with-wget
 RUN  apt-get update \

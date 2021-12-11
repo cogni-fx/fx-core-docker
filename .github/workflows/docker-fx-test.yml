@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         tag:
-          - dhobyghaut-1.0
+          - dhobyghaut-1.1
           - mainnet-1.0
           - testnet-1.0
   Docker:
@@ -51,7 +51,7 @@ jobs:
           docker run
           -v "$PWD"/config:/home/fxcore/.fxcore/config:rw
           -v "$PWD"/data:/home/fxcore/.fxcore/data:rw
-          fxcore init fx-zakir -o
+          fxcore init fx-zakir --overwrite
     strategy:
       matrix:
         net:
