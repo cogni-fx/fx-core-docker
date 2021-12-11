@@ -14,6 +14,11 @@ ARG FXNET=testnet
 ENV HOME /home/fxcore
 ENV FXHOME $HOME/.fxcore
 
+# Install prerequisites.
+RUN  apt-get update \
+  && apt-get install --no-install-recommends -qqq musl=1.1.24-1 \
+  && rm -rf /var/lib/apt/lists/*
+
 # Copy fxcored binary.
 COPY --from=fxcore-mainnet /usr/bin/fxcored /usr/bin/fxcored-mainnet
 COPY --from=fxcore-testnet /usr/bin/fxcored /usr/bin/fxcored-testnet
