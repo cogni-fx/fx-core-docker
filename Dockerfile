@@ -38,6 +38,6 @@ ADD --chown=fxcore:root [\
 
 # Update Docker configuration.
 ENTRYPOINT ["/usr/bin/fxcored"]
-EXPOSE 1317/TCP 9090/TCP 26656/TCP 26656/UDP 26657/TCP 26660/TCP
+EXPOSE 1317/TCP 8545/TCP 9090/TCP 26656/TCP 26656/UDP 26657/TCP 26660/TCP
 HEALTHCHECK CMD ["/usr/bin/bash", "-c", "</dev/tcp/127.0.0.1/26657"]
 VOLUME "$FXHOME/config" "$FXHOME/data"

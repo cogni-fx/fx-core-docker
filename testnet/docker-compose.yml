@@ -38,6 +38,7 @@ services:
         ipv4_address: 10.10.10.2
     ports:
       - 1317:1317  # REST API
+      - 8545:8545  # EVM
       - 26656:26656  # P2P
       - 26657:26657  # RPC
       - 26660:26660  # ABCI
