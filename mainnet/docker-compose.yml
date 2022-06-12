@@ -25,7 +25,7 @@ services:
       context: ..
       network: host
     command: /opt/scripts/entrypoint.sh
-    container_name: fxcore-mainnnet
+    container_name: fxcore-mainnet
     entrypoint: bash
     environment:
       - FXHOME=/home/fxcore/.fxcore
