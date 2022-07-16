@@ -17,7 +17,7 @@ repos:
       - id: forbid-binary
         exclude: ^(lib|conf/servers)/.*$
       - id: git-check     # Configure in .gitattributes
-      - id: markdownlint  # Configure in .mdlrc
+#     - id: markdownlint  # Configure in .mdlrc
       - id: require-ascii
       - id: script-must-have-extension
       - id: shellcheck
