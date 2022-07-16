@@ -1,5 +1,5 @@
 FROM functionx/fx-core:dhobyghaut-v2.0.1 AS fxcore-testnet
-FROM functionx/fx-core:mainnet-1.0 AS fxcore-mainnet
+FROM functionx/fx-core:v2.1.1 AS fxcore-mainnet
 FROM ubuntu:20.04 AS fxcore-ubuntu
 
 # Build arguments.
