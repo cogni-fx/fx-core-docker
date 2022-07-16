@@ -34,7 +34,7 @@ ADD --chown=fxcore:root [\
   "$FXHOME/config-$FXNET/"]
 
 # Update app configuration.
-RUN fxcored config update
+RUN fxcored config update && fxcored version
 #RUN fxcored config config.toml log_level warn
 
 # Update Docker configuration.
