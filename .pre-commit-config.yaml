@@ -2,29 +2,29 @@
 repos:
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.26.3
+    rev: v1.27.1
     hooks:
       - id: yamllint
 
   - repo: https://github.com/igorshubovych/markdownlint-cli.git
-    rev: v0.29.0
+    rev: v0.31.1
     hooks:
       - id: markdownlint
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
+    rev: 2.1.6
     hooks:
       - id: forbid-binary
         exclude: ^(lib|conf/servers)/.*$
       - id: git-check     # Configure in .gitattributes
-      - id: markdownlint  # Configure in .mdlrc
+#     - id: markdownlint  # Configure in .mdlrc
       - id: require-ascii
       - id: script-must-have-extension
       - id: shellcheck
       - id: shfmt
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.3.0
     hooks:
       - id: check-added-large-files
       - id: check-ast

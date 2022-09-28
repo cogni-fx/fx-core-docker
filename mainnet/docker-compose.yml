@@ -25,12 +25,12 @@ services:
       context: ..
       network: host
     command: /opt/scripts/entrypoint.sh
-    container_name: fxcore-mainnnet
+    container_name: fxcore-mainnet
     entrypoint: bash
     environment:
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=mainnet
-      - FXSNAPURL=https://fx-mainnet.s3.amazonaws.com/fxcore-snapshot-mainnet-2022-01-03.tar.gz
+      - FXSNAPURL=https://fx-mainnet.s3.amazonaws.com/fxcore-snapshot-mainnet-2022-06-27.tar.gz
       - HOME=/home/fxcore
     image: fxcore:mainnet
     networks:
