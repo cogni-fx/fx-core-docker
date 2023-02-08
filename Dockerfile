@@ -1,5 +1,7 @@
+FROM functionx/fx-core:3.1.0 AS fxcore-mainnet
+EXPOSE 1317/TCP 8545/TCP 8546/TCP 26656/TCP 26657/TCP 26660/TCP
 FROM functionx/fx-core:dhobyghaut-v2.0.1 AS fxcore-testnet
-FROM functionx/fx-core:2.4.0 AS fxcore-mainnet
+FROM ghcr.io/functionx/fxcorevisor:3.1.0 AS fxcore-mainnet-visor
 FROM ubuntu:20.04 AS fxcore-ubuntu
 
 # Build arguments.
