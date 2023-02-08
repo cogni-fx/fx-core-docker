@@ -1,7 +1,6 @@
 FROM functionx/fx-core:3.1.0 AS fxcore-mainnet
 FROM functionx/fx-core:dhobyghaut-v2.0.1 AS fxcore-testnet
 FROM ghcr.io/functionx/fxcorevisor:3.1.0 AS fxcore-mainnet-visor
-EXPOSE 1317/TCP 8545/TCP 8546/TCP 26656/TCP 26657/TCP 26660/TCP
 FROM ubuntu:20.04 AS fxcore-ubuntu
 
 # Build arguments.
@@ -41,6 +40,6 @@ RUN fxcored config update && fxcored version
 
 # Update Docker configuration.
 ENTRYPOINT ["/usr/bin/fxcored"]
-EXPOSE 1317/TCP 8545/TCP 9090/TCP 26656/TCP 26656/UDP 26657/TCP
+EXPOSE 1317/TCP 8545/TCP 8546/TCP 9090/TCP 26656/TCP 26657/TCP 26660/TCP
 HEALTHCHECK CMD ["/usr/bin/bash", "-c", "</dev/tcp/127.0.0.1/26657"]
 VOLUME "$FXHOME/config" "$FXHOME/data"
