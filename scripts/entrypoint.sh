@@ -40,4 +40,4 @@ if [ -n "$FXSNAPURL" ] && [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 
 fi
 
 # Start.
-/usr/bin/fxcored start --x-crisis-skip-assert-invariants
+/usr/bin/fxcored start
