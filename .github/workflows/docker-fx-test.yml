@@ -51,7 +51,7 @@ jobs:
           docker run
           -v "$PWD"/config:/home/fxcore/.fxcore/config:rw
           -v "$PWD"/data:/home/fxcore/.fxcore/data:rw
-          fxcore init fx-zakir --overwrite
+          fxcore init fx-zakir --overwrite --chain-id fx-zakir
     strategy:
       matrix:
         net:
