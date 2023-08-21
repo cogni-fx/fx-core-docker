@@ -1,6 +1,6 @@
-FROM functionx/fx-core:4.2.1 AS fxcore-mainnet
+FROM functionx/fx-core:4.2.2 AS fxcore-mainnet
 FROM functionx/fx-core:dhobyghaut-v2.0.1 AS fxcore-testnet
-FROM ghcr.io/functionx/fxcorevisor:4.2.1 AS fxcore-mainnet-visor
+FROM ghcr.io/functionx/fxcorevisor:4.2.2 AS fxcore-mainnet-visor
 FROM ubuntu:20.04 AS fxcore-ubuntu
 
 # Build arguments.
