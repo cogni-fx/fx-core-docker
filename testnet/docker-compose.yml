@@ -29,6 +29,7 @@ services:
     entrypoint: bash
     environment:
       - DAEMON_ALLOW_DOWNLOAD_BINARIES=false
+      - DAEMON_DATA_BACKUP_DIR=/home/fxcore/.fxcore/cosmovisor
       - DAEMON_NAME=fxcored
       - DAEMON_HOME=/home/fxcore/.fxcore
       - FXHOME=/home/fxcore/.fxcore

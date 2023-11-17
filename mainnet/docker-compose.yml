@@ -29,8 +29,9 @@ services:
     entrypoint: bash
     environment:
       - DAEMON_ALLOW_DOWNLOAD_BINARIES=false
-      - DAEMON_NAME=fxcored
+      - DAEMON_DATA_BACKUP_DIR=/home/fxcore/.fxcore/cosmovisor
       - DAEMON_HOME=/home/fxcore/.fxcore
+      - DAEMON_NAME=fxcored
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=mainnet
       - FXSNAPURL=https://fx-mainnet.s3.amazonaws.com/fxcore-pruned-snapshot-mainnet-2023-11-16.tar.gz
