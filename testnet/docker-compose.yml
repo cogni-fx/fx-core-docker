@@ -53,6 +53,7 @@ services:
         hard: 65535
     volumes:
       - fxcore-testnet-config:/home/fxcore/.fxcore/config:rw
+      - fxcore-testnet-cosmovisor:/home/fxcore/.fxcore/cosmovisor:rw
       - fxcore-testnet-data:/home/fxcore/.fxcore/data:rw
       - ../scripts:/opt/scripts:ro
   prometheus:
@@ -79,6 +80,8 @@ volumes:
   alertmanager_data:
   alertmanagerbot_data:
   fxcore-testnet-config:
+    external: true
+  fxcore-testnet-cosmovisor:
     external: true
   fxcore-testnet-data:
     external: true

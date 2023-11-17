@@ -59,6 +59,7 @@ services:
         hard: 65535
     volumes:
       - fxcore-mainnet-config:/home/fxcore/.fxcore/config:rw
+      - fxcore-mainnet-cosmovisor:/home/fxcore/.fxcore/cosmovisor:rw
       - fxcore-mainnet-data:/home/fxcore/.fxcore/data:rw
       - ../scripts:/opt/scripts:ro
   prometheus:
@@ -85,6 +86,8 @@ volumes:
   alertmanager_data:
   alertmanagerbot_data:
   fxcore-mainnet-config:
+    external: true
+  fxcore-mainnet-cosmovisor:
     external: true
   fxcore-mainnet-data:
     external: true
