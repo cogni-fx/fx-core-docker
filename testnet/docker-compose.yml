@@ -30,7 +30,7 @@ services:
     environment:
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=testnet
-      - FXSNAPURL=https://fx-testnet.s3.amazonaws.com/fxcore-snapshot-testnet-2022-06-20.tar.gz
+      - FXSNAPURL=https://testnet-fx.s3.amazonaws.com/fxcore-pruned-snapshot-testnet-2023-11-16.tar.gz
       - HOME=/home/fxcore
     image: fxcore:testnet
     networks:
