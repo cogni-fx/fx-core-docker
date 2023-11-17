@@ -29,6 +29,7 @@ function __curl() {
 # Initialize node if required.
 if [ ! -f "${fxcore_path_config}"/node_key.json ]; then
   /usr/bin/fxcored init fx-zakir --overwrite --chain-id fx-zakir
+  /usr/bin/cosmovisor init /usr/bin/fxcored
 fi
 
 # Copy config files.
