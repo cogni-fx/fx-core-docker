@@ -18,6 +18,7 @@ RUN  apt-get update \
 
 # Copy fxcored binary.
 COPY --from=fxcore-mainnet /usr/bin/fxcored /usr/bin/fxcored-mainnet
+COPY --from=fxcore-mainnet-visor /usr/bin/cosmovisor /usr/bin/cosmovisor
 COPY --from=fxcore-testnet /usr/bin/fxcored /usr/bin/fxcored-testnet
 RUN mv "/usr/bin/fxcored-$FXNET" /usr/bin/fxcored
 

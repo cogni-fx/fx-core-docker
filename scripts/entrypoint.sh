@@ -28,7 +28,7 @@ function __curl() {
 
 # Initialize node if required.
 if [ ! -f "${fxcore_path_config}"/node_key.json ]; then
-  /usr/bin/fxcored init fx-zakir
+  /usr/bin/fxcored init fx-zakir --overwrite --chain-id fx-zakir
 fi
 
 # Copy config files.
@@ -40,4 +40,4 @@ if [ -n "$FXSNAPURL" ] && [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 
 fi
 
 # Start.
-/usr/bin/fxcored start
+/usr/bin/cosmovisor run start --x-crisis-skip-assert-invariants
