@@ -34,7 +34,6 @@ services:
       - DAEMON_NAME=fxcored
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=mainnet
-      - FXSNAPURL=https://fx-mainnet.s3.amazonaws.com/fxcore-pruned-snapshot-mainnet-2023-11-16.tar.gz
       - HOME=/home/fxcore
       - UNSAFE_SKIP_BACKUP=true  # Skips performing a backup.
     image: fxcore:mainnet

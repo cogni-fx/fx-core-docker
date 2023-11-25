@@ -34,7 +34,6 @@ services:
       - DAEMON_HOME=/home/fxcore/.fxcore
       - FXHOME=/home/fxcore/.fxcore
       - FXNET=testnet
-      - FXSNAPURL=https://testnet-fx.s3.amazonaws.com/fxcore-pruned-snapshot-testnet-2023-11-16.tar.gz
       - HOME=/home/fxcore
     image: fxcore:testnet
     networks:

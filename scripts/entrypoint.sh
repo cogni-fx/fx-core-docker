@@ -4,6 +4,8 @@ set -ex
 # Init global variables.
 FXHOME=${FXHOME:-$HOME/.fxcore}
 FXNET=${FXNET:-testnet}
+FXSNAPURL=${FXSNAPURL:-https://fx-${FXNET}.s3.amazonaws.com/fxcore-pruned-snapshot-${FXNET}-$(date +%Y-%m-%d).tar.gz}
+#FXSNAPURL=${FXSNAPURL:-https://testnet-fx.s3.amazonaws.com/fxcore-pruned-snapshot-${FXNET}-$(date +%Y-%m-%d).tar.gz}
 
 # Init local variables.
 fxcore_path_config=$FXHOME/config
