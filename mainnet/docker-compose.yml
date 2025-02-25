@@ -28,7 +28,7 @@ services:
     container_name: fxcore-mainnet
     entrypoint: bash
     environment:
-      - DAEMON_ALLOW_DOWNLOAD_BINARIES=false
+      - DAEMON_ALLOW_DOWNLOAD_BINARIES=true
       - DAEMON_DATA_BACKUP_DIR=/home/fxcore/.fxcore/cosmovisor
       - DAEMON_HOME=/home/fxcore/.fxcore
       - DAEMON_NAME=fxcored
