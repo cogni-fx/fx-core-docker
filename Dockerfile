@@ -8,8 +8,8 @@ ARG FXHOME
 ARG FXNET=testnet
 
 # Environmental variables.
-ENV HOME /home/fxcore
-ENV FXHOME $HOME/.fxcore
+ENV HOME=/home/fxcore
+ENV FXHOME=$HOME/.fxcore
 
 # Install prerequisites.
 RUN  apt-get update \
