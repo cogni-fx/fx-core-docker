@@ -1,4 +1,4 @@
-FROM functionx/fx-core:7.5.0 AS fxcore-mainnet
+FROM ghcr.io/pundiai/fx-core:8.5.1 AS fxcore-mainnet
 FROM functionx/fx-core:dhobyghaut-v2.0.1 AS fxcore-testnet
 FROM ghcr.io/functionx/fxcorevisor:6.0.0 AS fxcore-mainnet-visor
 FROM ubuntu:20.04 AS fxcore-ubuntu
