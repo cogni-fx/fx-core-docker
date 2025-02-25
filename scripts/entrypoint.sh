@@ -37,10 +37,10 @@ fi
 # Copy config files.
 cp -uv "${fxcore_path_config_examples}"/*.* "${fxcore_path_config}"/
 
-# Extract data files from the snapshot.
-if [ -n "$FXSNAPURL" ] && [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
-  __curl "$FXSNAPURL" | tar -f- --skip-old-files -vxz -C "${fxcore_path_data}"/..
-fi
+## Extract data files from the snapshot.
+#if [ -n "$FXSNAPURL" ] && [ "$(wc -w < <(echo "${fxcore_path_data}"/*.db))" -lt 5 ]; then
+#  __curl "$FXSNAPURL" | tar -f- --skip-old-files -vxz -C "${fxcore_path_data}"/..
+#fi
 
 # Start.
 #/usr/bin/cosmovisor run start --x-crisis-skip-assert-invariants
